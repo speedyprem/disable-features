@@ -1,0 +1,15 @@
+{
+    "name": "ptiwari/disable-wordpress-features",
+    "autoload": {
+        "psr-4": {
+            "DisableWordpressFeatures\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Prem Tiwari",
+            "email": "prem.tiwari@news.co.uk"
+        }
+    ],
+    "require": {}
+}
