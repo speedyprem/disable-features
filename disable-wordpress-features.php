@@ -25,4 +25,6 @@ if ( ! class_exists( Plugin::class ) && is_readable( __DIR__ . '/vendor/autoload
     include __DIR__ . '/vendor/autoload.php';
 }
 
-new Plugin();
+$obj = new Plugin();
+
+$obj->configuration_change();

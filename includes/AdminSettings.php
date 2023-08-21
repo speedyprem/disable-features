@@ -18,8 +18,22 @@ class AdminSettings {
     }
     
     // Add in admin settiings.
-    public function dwf_settings() { ?>
-         <div class="clear"></div>
+    public function dwf_settings() { 
+
+        // Update the plugin settings.
+        if ( isset( $_REQUEST['submit-nonce'] ) && wp_verify_nonce( $_REQUEST['submit-nonce'], 'submit_form' ) ) {
+            $dwf_settings = [
+                'dxmlrpcswitch_value' => sanitize_text_field( $_POST[ 'dxmlrpcswitch' ] ),
+                'hsotswitch_value' =>  sanitize_text_field( $_POST[ 'hsotswitch' ] ),
+            ];
+
+            update_option( 'dwf_settings', $dwf_settings );
+        }
+
+        // Get dwf settings values.
+        $option_values = get_option( 'dwf_settings' );
+?>
+    <div class="clear"></div>
     <div class="wbcr-factory-page-header">
         <h1 style="color:#fff">Disable Features — Settings </h1>
     </div>
@@ -41,31 +55,30 @@ class AdminSettings {
                         <tbody>
                         <tr class="mlw-box-left">
                             <th scope="row">
-                                <span for="dpun">Disable WordPress REST API </span><br>
+                                <span for="dwraswitch">Disable WordPress REST API </span><br>
                                 <small>Easily disable the WP REST API on your website with this snippet.</small>
                             </th>
                             <td>
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="dpun" class="onoffswitch-checkbox" id="myonoffswitch" <?php if ( "on" === get_option( "dpun_setting" ) ) {
-                                        echo "checked"; } ?>>
-                                    <label class="onoffswitch-label" for="myonoffswitch" style="background: none; width: 56px; border: none;padding: inherit;">
-                                        <span class="onoffswitch-inner"></span>
-                                        <span class="onoffswitch-switch"></span>
+                                    <input disabled type="checkbox" name="dwraswitch" class="onoffswitch-checkbox disabled" id="dwraswitch">
+                                    <label class="onoffswitch-label" for="dwraswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                    <img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/switch-disable.png'; ?>" alt="switch-disable" width="60px;">
                                     </label>
                                 </div>
                             </td>
+                            <td><span class="pro-features">Available in PRO</span></td>
                         </tr>
 
                         <tr class="mlw-box-left">
                             <th scope="row">
-                                <span for="dpun">Disable XML-RPC </span><br>
+                                <span for="dxmlrpcswitch">Disable XML-RPC </span><br>
                                 <small>On sites running WordPress 3.5+, disable XML-RPC completely.</small>
                             </th>
                             <td>
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="dpun" class="onoffswitch-checkbox" id="myonoffswitch" <?php if ( "on" === get_option( "dpun_setting" ) ) {
+                                    <input type="checkbox" name="dxmlrpcswitch" class="onoffswitch-checkbox" id="dxmlrpcswitch" <?php if ( ! empty( $option_values['dxmlrpcswitch_value'] ) ) {
                                         echo "checked"; } ?>>
-                                    <label class="onoffswitch-label" for="myonoffswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                    <label class="onoffswitch-label" for="dxmlrpcswitch" style="background: none; width: 56px; border: none;padding: inherit;">
                                         <span class="onoffswitch-inner"></span>
                                         <span class="onoffswitch-switch"></span>
                                     </label>
@@ -75,14 +88,14 @@ class AdminSettings {
 
                         <tr class="mlw-box-left">
                             <th scope="row">
-                                <span for="dpun">Hide ‘Screen Options’ Tab </span><br>
+                                <span for="hsotswitch">Hide ‘Screen Options’ Tab </span><br>
                                 <small>Remove the Screen Options menu at the top of admin pages.</small>
                             </th>
                             <td>
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="dpun" class="onoffswitch-checkbox" id="myonoffswitch" <?php if ( "on" === get_option( "dpun_setting" ) ) {
+                                    <input type="checkbox" name="hsotswitch" class="onoffswitch-checkbox" id="hsotswitch" <?php if ( ! empty( $option_values['hsotswitch_value'] ) ) {
                                         echo "checked"; } ?>>
-                                    <label class="onoffswitch-label" for="myonoffswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                    <label class="onoffswitch-label" for="hsotswitch" style="background: none; width: 56px; border: none;padding: inherit;">
                                         <span class="onoffswitch-inner"></span>
                                         <span class="onoffswitch-switch"></span>
                                     </label>

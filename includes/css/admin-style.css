@@ -1,4 +1,3 @@
-
 /* base styles */
 input[type="radio"],
 input[type="checkbox"] {
@@ -276,4 +275,14 @@ span.dashicons.dashicons-menu, span.dashicons.dashicons dashicons-menu {
     h1 {
         margin-left: 15px;
     }
+}
+/* Available in Pro */
+.pro-features{
+    border-left-color: #dba617;
+    color: orange;
+    background-color: #fcf9e8;
+    border: 1px solid #c3c4c7;
+    border-left-width: 4px;
+    margin: 5px 50px 2px;
+    padding: 1px 12px;
 }
