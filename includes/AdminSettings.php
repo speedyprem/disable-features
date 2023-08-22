@@ -1,6 +1,6 @@
 <?php declare( strict_types = 1 );
 
-namespace DisableWordpressFeatures;
+namespace DisableFeatures;
 
 /**
  * Main plugin class.
@@ -25,6 +25,12 @@ class AdminSettings {
             $dwf_settings = [
                 'dxmlrpcswitch_value' => sanitize_text_field( $_POST[ 'dxmlrpcswitch' ] ),
                 'hsotswitch_value' =>  sanitize_text_field( $_POST[ 'hsotswitch' ] ),
+                'hwvnswitch_value' =>  sanitize_text_field( $_POST[ 'hwvnswitch' ] ),
+                'dwbswitch_value' =>  sanitize_text_field( $_POST[ 'dwbswitch' ] ),
+                'dwabswitch_value' =>  sanitize_text_field( $_POST[ 'dwabswitch' ] ),
+                'rdwpswitch_value' =>  sanitize_text_field( $_POST[ 'rdwpswitch' ] ),
+                
+                
             ];
 
             update_option( 'dwf_settings', $dwf_settings );
@@ -102,6 +108,75 @@ class AdminSettings {
                                 </div>
                             </td>
                         </tr>
+
+                        <tr class="mlw-box-left">
+                            <th scope="row">
+                                <span for="hsotswitch">Hide WordPress Version Number </span><br>
+                                <small>Remove the WordPress version number from the frontend site and feeds.</small>
+                            </th>
+                            <td>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="hwvnswitch" class="onoffswitch-checkbox" id="hwvnswitch" <?php if ( ! empty( $option_values['hwvnswitch_value'] ) ) {
+                                        echo "checked"; } ?>>
+                                    <label class="onoffswitch-label" for="hwvnswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="mlw-box-left">
+                            <th scope="row">
+                                <span for="hsotswitch">Disable Blocks Widget </span><br>
+                                <small>Disable the Blocks widgets and use the Classic Widgets</small>
+                            </th>
+                            <td>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="dwbswitch" class="onoffswitch-checkbox" id="dwbswitch" <?php if ( ! empty( $option_values['dwbswitch_value'] ) ) {
+                                        echo "checked"; } ?>>
+                                    <label class="onoffswitch-label" for="dwbswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="mlw-box-left">
+                            <th scope="row">
+                                <span for="hsotswitch">Disable WordPress Admin Bar</span><br>
+                                <small>Disable the WordPress Admin Bar for all users in the frontend.</small>
+                            </th>
+                            <td>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="dwabswitch" class="onoffswitch-checkbox" id="dwabswitch" <?php if ( ! empty( $option_values['dwabswitch_value'] ) ) {
+                                        echo "checked"; } ?>>
+                                    <label class="onoffswitch-label" for="dwabswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="mlw-box-left">
+                            <th scope="row">
+                                <span for="hsotswitch">Remove Dashboard Welcome Panel</span><br>
+                                <small>Remove the Welcome Panel from the Admin Dashboard</small>
+                            </th>
+                            <td>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="rdwpswitch" class="onoffswitch-checkbox" id="rdwpswitch" <?php if ( ! empty( $option_values['rdwpswitch_value'] ) ) {
+                                        echo "checked"; } ?>>
+                                    <label class="onoffswitch-label" for="rdwpswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        
                         
 
                         

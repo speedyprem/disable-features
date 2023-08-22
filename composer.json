@@ -1,14 +1,14 @@
 {
-    "name": "ptiwari/disable-wordpress-features",
+    "name": "ptiwari/disable-features",
     "autoload": {
         "psr-4": {
-            "DisableWordpressFeatures\\": "includes/"
+            "DisableFeatures\\": "includes/"
         }
     },
     "authors": [
         {
             "name": "Prem Tiwari",
-            "email": "prem.tiwari@news.co.uk"
+            "email": "freewebmentor@gmail.com"
         }
     ],
     "require": {}
