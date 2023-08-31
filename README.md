@@ -1,4 +1,3 @@
-# Disable Features
 It will disable all unnecessary WordPress features and speed up your website in an elegant way.
 
 For The PRO features use the below code
