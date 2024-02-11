@@ -21,7 +21,6 @@ class AdminSettings {
     public function dwf_settings() { 
 
         // Update the plugin settings.
-        //if ( isset( $_REQUEST['submit-nonce'] ) && wp_verify_nonce( $_REQUEST['submit-nonce'], 'submit_form' ) ) {
         if ( isset( $_POST['submit-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash ( $_POST['submit-nonce'] ) ), 'submit_form' ) ) {    
             $dwf_settings = [
                 'dxmlrpcswitch_value' => sanitize_text_field( $_POST[ 'dxmlrpcswitch' ] ),
