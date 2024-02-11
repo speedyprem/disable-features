@@ -1,6 +1,6 @@
 <?php declare( strict_types = 1 );
 
-namespace DisableFeatures;
+namespace DWF;
 
 /**
  * Main plugin class.
@@ -14,28 +14,32 @@ class AdminSettings {
 
     // Add in admin side panel.
     public function Admin_menu_dwnSettings() {
-        add_options_page( 'Disable WordPress Features Settings', 'Disable Features', 'manage_options', 'fm-dwns', [ $this, 'dwf_settings' ] );
+        add_options_page( 'Disable WordPress Features Settings', 'Disable Features', 'manage_options', 'disable-feature', [ $this, 'dwf_settings' ] );
     }
-    
+
     // Add in admin settiings.
     public function dwf_settings() { 
 
         // Update the plugin settings.
-        if ( isset( $_REQUEST['submit-nonce'] ) && wp_verify_nonce( $_REQUEST['submit-nonce'], 'submit_form' ) ) {
+        //if ( isset( $_REQUEST['submit-nonce'] ) && wp_verify_nonce( $_REQUEST['submit-nonce'], 'submit_form' ) ) {
+        if ( isset( $_POST['submit-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash ( $_POST['submit-nonce'] ) ), 'submit_form' ) ) {    
             $dwf_settings = [
                 'dxmlrpcswitch_value' => sanitize_text_field( $_POST[ 'dxmlrpcswitch' ] ),
                 'hsotswitch_value' =>  sanitize_text_field( $_POST[ 'hsotswitch' ] ),
                 'hwvnswitch_value' =>  sanitize_text_field( $_POST[ 'hwvnswitch' ] ),
                 'dwbswitch_value' =>  sanitize_text_field( $_POST[ 'dwbswitch' ] ),
                 'dwabswitch_value' =>  sanitize_text_field( $_POST[ 'dwabswitch' ] ),
-                'rdwpswitch_value' =>  sanitize_text_field( $_POST[ 'rdwpswitch' ] ),
-                
-                
+                'dauswitch_value' =>  sanitize_text_field( $_POST[ 'dauswitch' ] ),
+                'dcpmswitch_value' =>  sanitize_text_field( $_POST[ 'dcpmswitch' ] ),
+				'dafswitch_value' =>  sanitize_text_field( $_POST[ 'dafswitch' ] ),
             ];
 
             update_option( 'dwf_settings', $dwf_settings );
         }
 
+        if ( isset( $_POST['submit-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash ( $_POST['submit-nonce'] ) ), 'submit_form' ) ) {
+            echo '<div class="updated notice notice-success is-dismissible below-h2" id="message"><p>Settings updated successfully. </p></div>';
+        }
         // Get dwf settings values.
         $option_values = get_option( 'dwf_settings' );
 ?>
@@ -59,22 +63,6 @@ class AdminSettings {
                 <form name="fm_dwun" method="POST">
                     <table>
                         <tbody>
-                        <tr class="mlw-box-left">
-                            <th scope="row">
-                                <span for="dwraswitch">Disable WordPress REST API </span><br>
-                                <small>Easily disable the WP REST API on your website with this snippet.</small>
-                            </th>
-                            <td>
-                                <div class="onoffswitch">
-                                    <input disabled type="checkbox" name="dwraswitch" class="onoffswitch-checkbox disabled" id="dwraswitch">
-                                    <label class="onoffswitch-label" for="dwraswitch" style="background: none; width: 56px; border: none;padding: inherit;">
-                                    <img src="<?php echo plugin_dir_url( __FILE__ ) . 'img/switch-disable.png'; ?>" alt="switch-disable" width="60px;">
-                                    </label>
-                                </div>
-                            </td>
-                            <td><span class="pro-features">Available in PRO</span></td>
-                        </tr>
-
                         <tr class="mlw-box-left">
                             <th scope="row">
                                 <span for="dxmlrpcswitch">Disable XML-RPC </span><br>
@@ -162,7 +150,7 @@ class AdminSettings {
 
                         <tr class="mlw-box-left">
                             <th scope="row">
-                                <span for="hsotswitch">Remove Dashboard Welcome Panel</span><br>
+                                <span for="hsotswitch">Disable Dashboard Welcome Panel</span><br>
                                 <small>Remove the Welcome Panel from the Admin Dashboard</small>
                             </th>
                             <td>
@@ -176,10 +164,39 @@ class AdminSettings {
                                 </div>
                             </td>
                         </tr>
-                        
-                        
 
-                        
+                        <tr class="mlw-box-left">
+                            <th scope="row">
+                                <span for="hsotswitch">Disable comments page in menu</span><br>
+                                <small>Disable the comments page in admin menu in your site.</small>
+                            </th>
+                            <td>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="dcpmswitch" class="onoffswitch-checkbox" id="dcpmswitch" <?php if ( ! empty( $option_values['dcpmswitch_value'] ) ) {
+                                        echo "checked"; } ?>>
+                                    <label class="onoffswitch-label" for="dcpmswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+						<tr class="mlw-box-left">
+                            <th scope="row">
+                                <span for="hsotswitch">Disable Admin Footer</span><br>
+                                <small>Disable the admin footer text.</small>
+                            </th>
+                            <td>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="dafswitch" class="onoffswitch-checkbox" id="dafswitch" <?php if ( ! empty( $option_values['dafswitch_value'] ) ) {
+                                        echo "checked"; } ?>>
+                                    <label class="onoffswitch-label" for="dafswitch" style="background: none; width: 56px; border: none;padding: inherit;">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                     <p class="fm-footer">
@@ -192,7 +209,7 @@ class AdminSettings {
         
         <section id="section3">
             <input type="radio" name="sections" id="option3">
-            <label for="option3">Help
+            <label for="option3">Support
                 <span class="dashicons dashicons-admin-users"></span>
                 <div class="wbcr-factory-tab__short-description">
                     Having Issues?
@@ -212,7 +229,7 @@ class AdminSettings {
                         <ul>
                             <li style="margin-top: 15px;background: #fff4f1;padding: 10px;color: #a58074;">
                                 <span class="dashicons dashicons-warning"></span>
-                                If you find a php error or a vulnerability in plugin, you can <a href="https://github.com/speedyprem/disable-update-notifications/issues" target="_blank" rel="noopener">raise an issue</a> in github.</li>
+                                If you find a php error or a vulnerability in plugin, you can <a href="https://github.com/speedyprem/disable-features/issues" target="_blank" rel="noopener">raise an issue</a> in github.</li>
                         </ul>
                     </div>
                 </div>

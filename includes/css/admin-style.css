@@ -120,7 +120,7 @@ input[type="radio"]:disabled:checked:before {
 .onoffswitch-inner:after {
     content: "OFF";
     padding-right: 6px;
-    background-color: #b10707e0; 
+    background-color: #787c82; 
     color: #FFFFFF;
     text-align: right;
 }

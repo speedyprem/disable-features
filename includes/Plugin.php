@@ -1,7 +1,7 @@
 <?php declare( strict_types = 1 );
 
-namespace DisableFeatures;
-use DisableFeatures\AdminSettings;
+namespace DWF;
+use DWF\AdminSettings;
 /**
  * Main plugin class.
  */
@@ -11,7 +11,6 @@ class Plugin {
 	{
 		add_action( 'admin_menu',  [new AdminSettings, 'Admin_menu_dwnSettings'] );
 		add_action( 'admin_menu',  [new AdminSettings, 'dwf_admin_style'] );
-		
 	}
 
 	// Funtion to diasblae the WordPress features.
@@ -53,9 +52,17 @@ class Plugin {
 			);
 		}
 
-		
-		
+		// Remove comments page in menu.
+		if ( ! empty( $option_values['dcpmswitch_value'] ) ) {
+			add_action('admin_menu', function () {
+				remove_menu_page('edit-comments.php');
+			});
+		}
 
+		// Disable the admin footer text.
+		if ( ! empty( $option_values['dafswitch_value'] ) ) {
+			add_filter( 'admin_footer_text', '__return_empty_string', 11 ); 
+			add_filter( 'update_footer',     '__return_empty_string', 11 );
+		}
 	}
-
 }

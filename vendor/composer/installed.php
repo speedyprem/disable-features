@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'name' => 'ptiwari/disable-features',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '075fdad2a12b5c9f700f7e0b51f1d9427ae62af7',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
-        'name' => 'ptiwari/disable-wordpress-features',
         'dev' => true,
     ),
     'versions' => array(
-        'ptiwari/disable-wordpress-features' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+        'ptiwari/disable-features' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '075fdad2a12b5c9f700f7e0b51f1d9427ae62af7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
             'dev_requirement' => false,
         ),
     ),

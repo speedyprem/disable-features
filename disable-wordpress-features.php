@@ -1,18 +1,19 @@
 <?php
 /**
  * Plugin Name: Disable Features
- * Plugin URI: https://github.com/newsuk/nuk-hyperlinks-update/
+ * Plugin URI:  https://github.com/newsuk/nuk-hyperlinks-update/
  * Description: It will disable all unnecessary WordPress features and speed up your website in an elegant way.
- * Author: Prem Tiwari
- * Author URI: https://premtiwari.in
- * Version: 1.0
+ * Version:     1.0
+ * Author:      Prem Tiwari
+ * Author URI:  https://premtiwari.in
+ * License:     GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: disable-features
- *
  */
 
  declare( strict_types = 1 );
 
- use DisableFeatures\Plugin;
+ use DWF\Plugin;
 
 defined( 'ABSPATH' ) || die;
 

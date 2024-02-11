@@ -9,12 +9,12 @@ class ComposerStaticInitd0a3556d589157e7c8b2e58f860eade6
     public static $prefixLengthsPsr4 = array (
         'D' => 
         array (
-            'DisableWordpressFeatures\\' => 25,
+            'DWF\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'DisableWordpressFeatures\\' => 
+        'DWF\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
