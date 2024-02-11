@@ -14,5 +14,5 @@ It will disable all unnecessary WordPress features and speed up your website in 
 ## License
 
 Disable WordPress Update Notifications is licensed under [GNU General Public License v2 (or later)
-License:     GPL v2 or later
+<br>
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
