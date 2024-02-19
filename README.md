@@ -6,6 +6,17 @@
 
 It will disable all unnecessary WordPress features and speed up your website in an elegant way.
 
+## DISABLE THE FOLLOWING FEATURES:
+
+- Disable XML-RPC
+- Hide ‘Screen Options’ Tab
+- Hide WordPress Version Number
+- Disable Blocks Widget
+- Disable WordPress Admin Bar
+- Disable Dashboard Welcome Panel
+- Disable comments page in menu
+- Disable Admin Footer
+
 ## Installation
 
 * Login in your WordPress admin panel.
