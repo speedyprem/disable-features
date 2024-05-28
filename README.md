@@ -4,7 +4,11 @@
 
 ## Introduction
 
-It will disable all unnecessary WordPress features and speed up your website in an elegant way.
+It will disable all unnecessary WordPress features and speed up your website in an elegant way. This plugin is Super simple, Clean, Secure code, and Lightweight. We have also focused on flexibility, performance, and security to ensures that it will work with other WordPress plugins.
+
+Disabling unnecessary default features in WordPress is essential for optimizing site performance, security, and user experience. For instance, if your site is not utilising the Rest API, then deactivating the REST API and XML-RPC can mitigate potential security vulnerabilities. By tailoring WordPress to only include necessary features, you can ensure a faster, more secure, and user-focused website.
+
+By using this All-in-One plugin you can simply disable feature that you do not want to use with one click.
 
 ## DISABLE THE FOLLOWING FEATURES:
 
